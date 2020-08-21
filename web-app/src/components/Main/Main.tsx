@@ -3,7 +3,6 @@ import React, { FC } from "react";
 import styled from "styled-components";
 import DataContainer from "../DataContainer/DataContainer";
 import FiltersPanel from "../FiltersPanel/FiltersPanel";
-import { FiltersProvider } from "../../context/FiltersContext";
 import Header from "../Header/Header";
 
 const Main = styled.div`
@@ -23,10 +22,8 @@ const MainContainer: FC = () => (
       marginTop: "50px",
       paddingTop: "10px",
     }}>
-      <FiltersProvider>
-        <FiltersPanel />
-        <DataContainer />
-      </FiltersProvider>
+      <FiltersPanel />
+      <DataContainer />
     </div>
   </Main>
 );
