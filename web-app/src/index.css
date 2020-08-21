@@ -18,3 +18,7 @@ body,
   width: 100%;
   height: 100%;
 }
+
+.material-pane {
+  border-radius: 5px;
+}
