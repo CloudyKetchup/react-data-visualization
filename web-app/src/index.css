@@ -19,6 +19,11 @@ body,
   height: 100%;
 }
 
+button, input {
+  border: none;
+  outline: none;
+}
+
 .material-pane {
   border-radius: 5px;
 }
