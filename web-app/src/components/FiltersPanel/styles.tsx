@@ -30,44 +30,30 @@ const FilterTitle = styled.div`
 const Footer = styled.div`
   width: 100%;
   height: 100px;
+  padding: 40px;
+  padding-top: 0;
+  padding-bottom: 0;
   bottom: 0;
   position: absolute;
 `;
 
-const DropdownStyles = styled.div`
-  width: 70%;
-  display: block;
-  position: relative;
-`;
-
-const DropdownItem = styled.div`
-  padding: 10px;
+const GenerateGraph = styled.button`
+  background: #34aeeb;
+  height: 40px;
+  width: calc(100% - 80px);
+  color: white;
+  font-weight: 500px;
+  -webkit-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.25);
+  -moz-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.25);
+  box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.25);
+  transition: 0.2s;
   cursor: pointer;
 
   &:hover {
-    background: #c2c5c8;
+    -webkit-box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.25);
+    -moz-box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.25);
+    box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.25);
   }
-`;
-
-const DropdownItems = styled.div`
-  position: absolute;
-  background: white;
-  width: 100%;
-  -webkit-box-shadow: 0px 1px 14px 0px rgba(0,0,0,0.35);
-  -moz-box-shadow: 0px 1px 14px 0px rgba(0,0,0,0.35);
-  box-shadow: 0px 1px 14px 0px rgba(0,0,0,0.35);
-`;
-
-const DropdownHeader = styled.div`
-  display: flex;
-  line-height: 30px;
-  border: 1px solid gray;
-  border-radius: 5px;
-  padding: 4px;
-  padding-top: 7px;
-  padding-left: 15px;
-  padding-right: 15px;
-  cursor: pointer;
 `;
 
 export {
@@ -76,8 +62,5 @@ export {
   Filter,
   FilterTitle,
   Footer,
-  DropdownStyles,
-  DropdownItems,
-  DropdownItem,
-  DropdownHeader
+  GenerateGraph,
 };
