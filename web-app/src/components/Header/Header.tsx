@@ -2,7 +2,8 @@ import React, { FC } from "react";
 import styled from "styled-components";
 
 import { useRecoilState } from "recoil";
-import FiltersPane from "../../atoms/FiltersPane";
+import FiltersPane        from "../../atoms/FiltersPane";
+import { GraphDataAtom, SearchGraphAtom } from "../../atoms/GraphData";
 
 import { ReactComponent as SearchSVG } from "../../assets/icons/search.svg";
 import "./header.css";
@@ -32,8 +33,26 @@ const Toggler: FC = () => {
 }
 
 const Header: FC = () => {
-  const onSearch = () => {
-    //TODO: implement
+  const [graphData] = useRecoilState(GraphDataAtom);
+  const [__, setSearchGraph] = useRecoilState(SearchGraphAtom);
+  let timeout: number;
+
+  const onSearch = async () => {
+    clearTimeout(timeout);
+
+    timeout = setTimeout(() => {
+      const input = document.getElementById("cve-search") as HTMLInputElement;
+      const search = input.value;
+
+      if (search.length > 4)
+      {
+        const cve = graphData?.data.filter(cve => cve.cve.CVE_data_meta.ID === search);
+
+        cve && setSearchGraph({ data: cve });
+      } else {
+        setSearchGraph(undefined);
+      }
+    }, 500);
   };
 
   return (
@@ -52,6 +71,7 @@ const Header: FC = () => {
           </div>
           <div>
             <input
+              id="cve-search"
               type="text"
               onChange={onSearch}
               placeholder="Search by CVE ID"
