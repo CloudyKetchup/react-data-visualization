@@ -25,10 +25,10 @@ const TableGraph: FC = () => {
     { headerName: "DESCRIPTION", field: "description" }
   ];
 
-  const rows = graphData?.data.map(cve => ({
+  const rows = graphData?.data.map(({ cve, impact, publishedDate }) => ({
     id: cve.CVE_data_meta.ID,
-    published_date: cve.impact.publishedDate,
-    severity: cve.impact.baseMetricV2.severity,
+    published_date: publishedDate,
+    severity: impact.baseMetricV2?.severity,
     description: cve.description.description_data[0].value
   }));
  
