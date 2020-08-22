@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  # server
+  server:
+    container_name: cve-analysis-server
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    networks: 
+      - backend
+    ports: 
+      - 8080:8080
+
+  # react app
+  web-app:
+    container_name: cve-analysis-react
+    build:
+      context: ./web-app
+      dockerfile: Dockerfile
+    networks: 
+      - backend
+    ports: 
+      - 5000:5000
+
+networks:
+  backend:
+    driver: bridge
