@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 
-import { useRecoilState } from "recoil";
-import { GraphDataAtom, SearchGraphAtom }  from "../../atoms/GraphData";
+import { useRecoilState }   from "recoil";
+import { YearsFilterAtom }  from "../../atoms/Filters";
+import { GraphDataAtom, SearchGraphAtom } from "../../atoms/GraphData";
 
 import Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
@@ -18,8 +19,9 @@ type Series = {
 }
 
 const LineGraph = () => {
-  const [graphData] = useRecoilState(GraphDataAtom);
+  const [graphData]   = useRecoilState(GraphDataAtom);
   const [searchGraph] = useRecoilState(SearchGraphAtom);
+  const [yearsFilter] = useRecoilState(YearsFilterAtom);
   const [seriesData, setSeriesData] = useState<Series[]>([])
 
   const dataSource = searchGraph || graphData;
@@ -74,7 +76,7 @@ const LineGraph = () => {
 
   const options = {
     title: {
-      text: `CVE Analysis for `
+      text: yearsFilter?.year ? `CVE Analysis for ${yearsFilter.year}` : "CVE Analysis"
     },
     legend: {
       layout: 'vertical',
