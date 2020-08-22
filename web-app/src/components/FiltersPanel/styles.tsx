@@ -1,12 +1,12 @@
 import styled from "styled-components";
 
 const FiltersStyles = styled.div`
-  height: 100%;
+  height: 90vh;
   width: 300px;
   float: left;
   background: white;
   transition: 0.2s;
-  position: relative;
+  position: fixed;
 `;
 
 const FiltersContainer = styled.div`

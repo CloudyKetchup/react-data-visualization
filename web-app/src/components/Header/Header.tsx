@@ -13,6 +13,7 @@ const HeaderStyles = styled.div`
   height: 50px;
   background: #34aeeb;
   position: fixed;
+  z-index: 2;
   -webkit-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.55);
   -moz-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.55);
   box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.55);
