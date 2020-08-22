@@ -24,6 +24,9 @@ const FiltersPanel: FC = () => {
   const [severitiesFilter]  = useRecoilState(SeveritiesFilterAtom);
   const [_, setGraphData]   = useRecoilState(GraphDataAtom);
 
+	/***
+	 * Fetch graph data from api based on filters
+	 */
   const generateGraph = async () => {
     const severities = severitiesFilter.map(severity => severity.severity.toUpperCase() as Severity)
 
@@ -32,6 +35,7 @@ const FiltersPanel: FC = () => {
       year: yearsFilter?.year
     })
 
+		// if data fetched, update the state
     data && setGraphData({ data: data });
   };
 

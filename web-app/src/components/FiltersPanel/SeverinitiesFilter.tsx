@@ -17,10 +17,10 @@ const SeveritiesFilter: FC = () => {
    * @param {string} title
    * */ 
   const onFilter = (title: string) => {
-    const update = [...severitiesFilter];
-    const filter = update.filter(s => s.severity === title)[0];
+		const update = [...severitiesFilter];												// list used as update
+		const filter = update.filter(s => s.severity === title)[0];	// check if filter already applied
 
-    // add found this filter, delete it
+    // if filter already applied, delete it
     if (filter)
     {
       const index = update.findIndex(s => s === filter)
@@ -53,6 +53,7 @@ const SeveritiesFilter: FC = () => {
       onClick: () => onFilter("Critical")
     }
   ] as IDropdownItem[]).map(severity => {
+		// check if already selected
     severity.selected = severitiesFilter.find(s => s.severity === severity.title) !== undefined;
 
     return severity;

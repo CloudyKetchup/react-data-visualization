@@ -20,6 +20,7 @@ const HeaderStyles = styled.div`
   box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.55);
 `;
 
+// Filters drawer toggle button
 const Toggler: FC = () => {
   const [filtersPane, setFiltersPane] = useRecoilState(FiltersPane);
 
@@ -35,10 +36,14 @@ const Toggler: FC = () => {
 const Header: FC = () => {
   const [graphData] = useRecoilState(GraphDataAtom);
   const [__, setSearchGraph] = useRecoilState(SearchGraphAtom);
-  let timeout: number;
+	let timeout: number;	// time out for search input
 
+	/***
+	 * Search CVE by ID, will run the search
+	 * only after 500ms after user stopped typing
+	 * */
   const onSearch = async () => {
-    clearTimeout(timeout);
+		clearTimeout(timeout); // reset timer every time when user types a something
 
     timeout = setTimeout(() => {
       const input = document.getElementById("cve-search") as HTMLInputElement;
@@ -46,10 +51,13 @@ const Header: FC = () => {
 
       if (search.length > 4)
       {
+				// search the CVE in graph already fetched data
         const cve = graphData?.data.filter(cve => cve.cve.CVE_data_meta.ID === search);
 
+				// if found udpate the state
         cve && setSearchGraph({ data: cve });
       } else {
+				// remove search state if characters length too short
         setSearchGraph(undefined);
       }
     }, 500);

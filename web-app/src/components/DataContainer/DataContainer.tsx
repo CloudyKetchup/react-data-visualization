@@ -28,13 +28,12 @@ const DataContainer: FC = () => {
   const [yearsFilter] = useRecoilState(YearsFilterAtom);
 
   useEffect(() => {
+		// fetch alld CVE's from the api
     const fetch = async () => {
       const { data } = await all();
 
-      if (data)
-      {
-        setGraphData({ data: data });
-      }
+			// if data recieved udpate the state
+      data && setGraphData({ data: data });
     };
 
     fetch();

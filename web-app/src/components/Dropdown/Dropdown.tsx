@@ -28,9 +28,15 @@ export const Dropdown: FC<IDropdownProps> = ({
 }) => {
   const [expanded, setExpanded] = useState<boolean>(false);
 
+	/***
+	 * Dropdown item click action
+	 *
+	 * @param {IDropdownItem} item		which item was clicked
+	 * */
   const onItemClick = (item: IDropdownItem) => {
     item.onClick();
 
+		// dropdown menu doesn't have selectMultiple flag, collapse it
     !selectMultiple && setExpanded(false);
   };
 
