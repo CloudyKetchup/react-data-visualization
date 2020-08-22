@@ -21,9 +21,9 @@ const TableGraph: FC = () => {
 
   const dataSource = searchGraph || graphData;
   const columns = [
-    { headerName: "CVE ID", field: "id" },
-    { headerName: "PUBLISHED DATE", field: "published_date" },
-    { headerName: "SEVERITY", field: "severity" },
+    { headerName: "CVE ID", field: "id", sortable: true },
+    { headerName: "PUBLISHED DATE", field: "published_date", sortable: true },
+    { headerName: "SEVERITY", field: "severity", sortable: true },
     { headerName: "DESCRIPTION", field: "description" }
   ];
 
