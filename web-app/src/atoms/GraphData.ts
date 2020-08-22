@@ -8,4 +8,9 @@ const GraphDataAtom = atom<IGraphData | undefined>({
   default: undefined
 })
 
-export { GraphDataAtom };
+const SearchGraphAtom = atom<IGraphData | undefined>({
+  key: "SearchGraph",
+  default: undefined
+});
+
+export { GraphDataAtom, SearchGraphAtom };
