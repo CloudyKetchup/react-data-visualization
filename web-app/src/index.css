@@ -27,3 +27,7 @@ button, input {
 .material-pane {
   border-radius: 5px;
 }
+
+.ag-center-cols-container {
+  width: 100% !important;
+}
