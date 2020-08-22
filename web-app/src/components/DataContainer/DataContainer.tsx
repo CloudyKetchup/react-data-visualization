@@ -13,9 +13,8 @@ import { all } from "../../api/GraphApi";
 import styled from "styled-components";
 
 const DataContainerStyles = styled.div`
-  display: grid;
-  grid-gap: 20px;
-  height: 100%;
+  overflow: auto;
+  min-height: 100%;
   padding: 20px;
   float: right;
   background: white;
