@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 
 import { useRecoilState } from "recoil";
-import { GraphDataAtom } from "../../atoms/GraphData";
+import { GraphDataAtom, SearchGraphAtom } from "../../atoms/GraphData";
 
 import { AgGridReact } from 'ag-grid-react';
 
@@ -17,7 +17,9 @@ const TableGraphStyles = styled.div`
 
 const TableGraph: FC = () => {
   const [graphData] = useRecoilState(GraphDataAtom);
+  const [searchGraph] = useRecoilState(SearchGraphAtom);
 
+  const dataSource = searchGraph || graphData;
   const columns = [
     { headerName: "CVE ID", field: "id" },
     { headerName: "PUBLISHED DATE", field: "published_date" },
@@ -25,7 +27,7 @@ const TableGraph: FC = () => {
     { headerName: "DESCRIPTION", field: "description" }
   ];
 
-  const rows = graphData?.data.map(({ cve, impact, publishedDate }) => ({
+  const rows = dataSource?.data.map(({ cve, impact, publishedDate }) => ({
     id: cve.CVE_data_meta.ID,
     published_date: publishedDate,
     severity: impact.baseMetricV2?.severity,
