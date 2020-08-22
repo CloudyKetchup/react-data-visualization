@@ -5,20 +5,23 @@ export type DescriptionData = {
 };
 
 export type CVE = {
-  data_type: string,
-  data_format: string,
-  data_version: string,
-  CVE_data_meta: {
-    ID: string,
-    ASSIGNER: string
+  cve : {
+    data_type: string,
+    data_format: string,
+    data_version: string,
+    CVE_data_meta: {
+      ID: string,
+      ASSIGNER: string
+    },
+    description: {
+      description_data: DescriptionData[]
+    }
   },
   impact: {
     baseMetricV2: {
       severity: Severity
-    },
-    publishedDate: string
+    }
   },
-  description: {
-    description_data: DescriptionData[]
-  },
+  publishedDate: string,
+  lastModifiedDate: string
 };
