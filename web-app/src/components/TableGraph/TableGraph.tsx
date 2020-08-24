@@ -18,7 +18,7 @@ const TableGraphStyles = styled.div`
 const TableGraph: FC = () => {
   const [graphData] = useRecoilState(GraphDataAtom);
   const [searchGraph] = useRecoilState(SearchGraphAtom);
-
+	// display search data as priority
   const dataSource = searchGraph || graphData;
   const columns = [
     { headerName: "CVE ID", field: "id", sortable: true },
@@ -26,7 +26,7 @@ const TableGraph: FC = () => {
     { headerName: "SEVERITY", field: "severity", sortable: true },
     { headerName: "DESCRIPTION", field: "description" }
   ];
-
+	// populate rows with cve data
   const rows = dataSource?.data.map(({ cve, impact, publishedDate }) => ({
     id: cve.CVE_data_meta.ID,
     published_date: publishedDate,
